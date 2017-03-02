@@ -100,7 +100,7 @@ fops_close (struct inode *inode, struct file *filp)
 	struct mmap_info *info;
 	info = filp->private_data;
 
-	free_page((unsigned long )info->data);
+	kfree(info->data);//free_page((unsigned long )info->data);
 	kfree(info);
 	filp->private_data = NULL;
 	return 0;
